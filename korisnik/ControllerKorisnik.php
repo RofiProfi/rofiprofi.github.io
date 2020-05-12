@@ -1,5 +1,5 @@
 <?php
-//session_start();
+session_start();
 require_once '../korisnik/DAOProizvodi.php';
 
 class ControllerKorisnik{
@@ -26,6 +26,10 @@ include 'pocetna.php';
     
     function goRacun(){
         include '../racun/racun.php';
+    }
+
+    function goAccount(){
+        include '../korisnik/nalog.php';
     }
     //function potvrda(){
        // include 'potvrda.php';
@@ -100,7 +104,45 @@ include 'pocetna.php';
 	    
 	}
 	
+	public function promeniSifru()
+	{
+		$dao=new DAOProizvodi;
+		$controller= new ControllerKorisnik();
+		$idkorisnik=$_SESSION['ulogovan']['korisnik_id'];
+		$korisnik_sifra= isset($_POST['customer_pass'])? $controller->testInput($_POST['customer_pass']):"";
+		$korisnik_sifra_potvrda= isset($_POST['password_confirm'])? $controller->testInput($_POST['password_confirm']):"";
+		if(!empty($korisnik_sifra) && !empty($korisnik_sifra_potvrda))
+		{
+		if($korisnik_sifra==$korisnik_sifra_potvrda){
+			$dao->updateSifru($korisnik_sifra,$idkorisnik);
+			$msg ="Uspesno promenjena sifra!";
+			include "../korisnik/nalog.php";
+		}
+		else{
+			$msg="Nova sifra i potvrdjena sifra se ne poklapaju, probajte ponovo!";
+			include "../korisnik/nalog.php";
+		}	
+		}
+else
+{
+	$msg="Morate popuniti sva polja!";
+			include "../korisnik/nalog.php";
+}
 	
 	
 }
+
+
+function testInput ($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
+	
+
+	}
+
+
+
 ?>

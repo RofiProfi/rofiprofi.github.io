@@ -23,6 +23,9 @@ switch($_SERVER['REQUEST_METHOD']) {
             case 'gocart':
                 $controller->gocart();
                 break;
+            case 'goAccount':
+                $controller->goAccount();
+                break;
                 
             case 'goregister':
                 $controller->goRegister();
@@ -68,6 +71,9 @@ switch($_SERVER['REQUEST_METHOD']) {
                 break;
             case 'register':
                 $controller->register();
+                break;
+                case 'Promeni':
+                $controller->promeniSifru();
                 break;
             case 'potvrda':
                 $controller->narudzbenica();

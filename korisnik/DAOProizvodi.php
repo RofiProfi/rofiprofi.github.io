@@ -27,7 +27,9 @@ class DAOProizvodi {
     
     private $updateKolicina= "UPDATE kolica set kolica_kolicina=kolica_kolicina+1  where korisnik_id=? and proizvod_id=?";
     
-    
+     private $updateSifru= "UPDATE korisnici set korisnik_sifra=? where korisnik_id=?";
+
+
     private $selectKateg= "Select * from kategorije";
     
     public function __construct()
@@ -68,8 +70,6 @@ class DAOProizvodi {
     
     
     
-    
-    
      function selectKategorije()
     {
         $statement = $this->db->prepare($this->selectKateg);
@@ -106,13 +106,16 @@ class DAOProizvodi {
      }
     
    
-    
-    
-    
-  
-    
-    
-    
+function updateSifru($korisnik_sifra,$korisnik_id)
+    {
+        $statement = $this->db->prepare($this->updateSifru);
+        $statement->bindValue(1, $korisnik_sifra);
+        $statement->bindValue(2, $korisnik_id);
+        
+        $statement->execute();
+        
+        
+     }
     // artikli
      function selectArtikli()
     {
