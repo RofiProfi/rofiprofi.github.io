@@ -4,42 +4,20 @@ require_once '../config/db.php';
 class DAOKolica {
 	private $db;
 
-	
-	
-	//artika
-	
-	
-	
-	
-	
 	//private $insertkolica= "INSERT into kolica (korisnik_id,proizvod_id,proizvod_naziv,proizvod_slika2,proizvod_cena,proizvod_opis,kolicina) VALUES (?,?,?, ?,?,?,?)";
 	
 	private $selectArtikalByUser= "Select proizvod_id, proizvod_naziv,proizvod_naziv,proizvod_slika2,proizvod_cena,proizvod_opis,kolica_kolicina from kolica where korisnik_id=?";
-	
-	
-	
-	
 	private $deletekolica= "DELETE  from kolica where korisnik_id=?";
-	
 	private $deleteProduct= "DELETE  from kolica where korisnik_id=? and proizvod_id=?";
-	
-	
 	private $SELECTUKUPNO = "SELECT SUM(kolica_kolicina*proizvod_cena) from kolica where korisnik_id=?";
 	
-	
+
 
 	public function __construct()
 	{
 		$this->db = DB::createInstance();
 	}
 
-
-	
-	
-	
-	
-	
-	
 	
 	public function deleteProduct($korisnik_id,$proizvod_id)
 	{

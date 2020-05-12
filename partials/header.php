@@ -61,7 +61,7 @@ if(!isset($_SESSION['ulogovan'])){
 <div class="col-sm-8">
 <div class="shop-menu pull-right">
 <ul class="nav navbar-nav">
-<li><a href="#"><i class="fa fa-user"></i> Nalog</a></li>
+<li><a href="../korisnik/?action=goAccount"><i class="fa fa-user"></i> Nalog</a></li>
 <li><a href="../kolica/?action=gocart"><i class="fa fa-shopping-cart"></i> Kolica</a></li>
 
 </ul>

@@ -37,7 +37,7 @@ $dao=new DAOKolica();?>
 							
 									
 							<td class="cart_product">
-							<?php echo $k["proizvod_slika2"]?>
+							<?php echo "<img src='../admin/proizvodi/". $k['proizvod_slika2']. "''> ";?>
 
 							</td>
 							
