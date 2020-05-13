@@ -1,8 +1,7 @@
- 
 <?php
-/*
-require 'login/ControllerLogin.php';
-$controller = new ControllerLogin();
+
+require 'ControllerPocetna.php';
+$controller = new ControllerPocetna();
 
 $action=isset($_REQUEST['action'])?$_REQUEST['action']:'';
 
@@ -13,6 +12,10 @@ switch($_SERVER['REQUEST_METHOD']) {
           case 'gologin':
                 $controller->gologin();
                 break;
+                
+          case 'goKorisnici':
+                $controller->goKorisnici();
+                break;      
         
             case 'pocetna':
                 $controller->pocetna();
@@ -20,11 +23,16 @@ switch($_SERVER['REQUEST_METHOD']) {
                 
                 
           case 'goNarudzbenice':
-              $controller->narudzbenice();
+              $controller->Idinarudzbenice();
               break;
          
-                
-                
+         case 'goKategorija':
+              $controller->IdiNaKategorije();
+              break;
+ 
+          case 'goProizvodi':
+          $controller->goProizvodi();
+          break;    
             case 'logout':
                 $controller->logout();
                 break;
@@ -44,6 +52,6 @@ switch($_SERVER['REQUEST_METHOD']) {
             
         }
         
-}*/
-header("Location:login/?action=gologin");
+}
+
 ?>

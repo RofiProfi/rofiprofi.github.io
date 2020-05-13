@@ -11,31 +11,32 @@ switch($_SERVER['REQUEST_METHOD']) {
             case 'pocetna':
                 $controller->pocetna();
                 break;
-                
+                case 'goKorisnici':
+                $controller->goKorisnici();
+                break;      
                 
             case 'gologin':
-                $controller->gologin();
+                $controller->loginAdmin();
                 break;
                 
-                
+                case 'goNarudzbenice':
+              $controller->Idinarudzbenice();
+              break;
+                case 'goProizvodi':
+                $controller->goProizvodi();
             case 'logout':
                 $controller->logout();
                 break;
             
-            default:
-                // ZA POGRESNE RUTE IZLOGOVATI KORISNIKA
-                $controller->pocetna();
-                break;
+            
         }
         
     case "POST":
         switch ($action){
             case 'Login':
-                $controller->login();
+                $controller->loginAdmin();
                 break;
-            case 'register':
-                $controller->register();
-                break;
+            
             
         }
         

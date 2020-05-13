@@ -40,7 +40,7 @@
 	
 	
 	<footer id="footer"><!--Footer-->
-		<?php include '../partials/footer2.php' ?>
+		<?php include '../../partials/footer2.php' ?>
 		
 	</footer><!--/Footer-->
 

@@ -4,16 +4,32 @@ require_once 'DAOLogin.php';
 class ControllerLogin{
     
     function pocetna() {
-        header("Location:../admin/?action=pocetna");
+       include '../pocetna/pocetna.php'; //ovo je dodanto ali ne valja valjda
+
+       // include ''
     }
     
     function gologin() {
-        include 'login.php';
+        include '../login/login.php';
         
     }
     
+        function goKorisnici() {
+        include '../korisnici/korisnici.php';
+        
+    }
+
+
+    function Idinarudzbenice() {
+        
+include 'narudzbenice/narudzbenice.php' ;   }
     
     
+    function goProizvodi(){
+  //  header("Location:../?action=goProizvodi");     
+    include 'proizvodi/proizvodi.php';
+}
+
     function logout(){
         session_start();
         session_unset();
@@ -28,7 +44,7 @@ class ControllerLogin{
         return $data;
     }
     
-    function login(){
+    function loginAdmin(){
         $controller=new ControllerLogin();
         $admin_email = isset($_POST['admin_email'])? $controller->testInput($_POST['admin_email']): "";
         $admin_pass = isset($_POST['admin_pass'])? $controller->testInput($_POST['admin_pass']): "";
@@ -45,16 +61,16 @@ class ControllerLogin{
                 
                 
                 //include 'pocetna.php';
-                include '../admin/narudzbenice/narudzbenice.php';
-                
+                //include '../pocetna/pocetna.php'; // i ovde je dodato ovo za pocetnu stranu, ispraviti to!
+                header("Location:../pocetna/?action=pocetna");
             }else{
                 // LogIN ERROR
                 $msg = 'Pogresni parametri za logovanje!!!';
-                include 'login.php';
+                include '../login/login.php';
             }
         }else{
             $msg = 'Morate popuniti sva polja!!!';
-            include 'login.php';
+            include '../login/login.php';
         }
     }
 }
