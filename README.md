@@ -32,5 +32,14 @@ Admin login:
 
 ![](kozmolend-ss/admin.JPG)	
 
-Admin List of orders:
-![](kozmolend-ss/admin-list-of-orders.JPG)
+Admin Home Page:
+![](kozmolend-ss/admin-pocetna.JPG)
+Admin List Of Orders:
+![](kozmolend-ss/admin-narudzbenice.JPG)
+Admin Products:
+![](kozmolend-ss/admin-proizvodi.JPG)
+Admin Categories:
+![](kozmolend-ss/admin-kategorije.JPG)
+Admin Users:
+![](kozmolend-ss/admin-korisnici.JPG)
+
