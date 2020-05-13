@@ -16,11 +16,12 @@
 <?php include '../partials/sidebar.php';
 ?>
 
-
-
-
 </head>
 <body>
-	<h3>Ja sam pocetn</h3>
+	<div class="main">
+
+	<h3 text-align="center">Dobrodosao Admine!</h3>
+	<h3>Odaberi neku od opcja iz sidebara!!</h3>
+</div>
 </body>
 </html>
