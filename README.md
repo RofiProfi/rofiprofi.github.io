@@ -4,10 +4,10 @@ College project website named Kozmolend. Website includes:
 •	Home page with the products
 •	Cart page in which a customer can delete one product or all products from the cart, edit quantity of the products in the cart and proceed to check page.
 •	Check page
-•	Admin page in which the admin can see history of orders
+•	Admin home page in which the admin can CRUD customer's orders, products, categories & users.
 Back-end and design of database done by me.
 Front-end of the project did colleague of mine.
-Note: Project is not completed but all the named functions work.
+Note: Project is almost completed but there should be added some triggers for better funcionality of database. :)
 
 Screenshots of website:
 Login and registration page:
