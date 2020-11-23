@@ -1,12 +1,7 @@
 <?php// session_start();
-require_once '../korisnik/DAOProizvodi.php';
-
-
-
+//require_once '../korisnik/DAOProizvodi.php';
 ?>
-        
-
-  
+ 
   <?php
 //	session_start();
 	//var_dump($_SESSION);
