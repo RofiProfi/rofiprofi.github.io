@@ -20,7 +20,7 @@ class DB{
         try{
 			$dsn="pgsql:host=".$host.";port=".$port.";dbname=".$dbname.";user=".$user.";password=".$password.";";
          $pdo = new PDO($dsn,$user,$password);
-        
+
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, true);
             $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
