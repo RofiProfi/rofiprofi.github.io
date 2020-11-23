@@ -71,14 +71,14 @@ $dao=new DAOKolica();?>
 								<p class="cart_total_price">
 								<?php  $ukupno=$dao->ukupno($_SESSION['ulogovan']["korisnik_id"]);
 								foreach($ukupno as $u){
-								    echo $u['SUM(kolica_kolicina*proizvod_cena)'];}
-								//$_SESSION['cena']=$cena;?></p>
+								    //Moze i ovako
+								//echo $u['SUM(kolica_kolicina*proizvod_cena)'];}
+								//$_SESSION['cena']=$cena;
+									echo $u["sum"];}
+									?></p>
 							</td>
 							</tr>
-					
-						
 					</tbody>
-					
 				</table>
 					
 			</div>
