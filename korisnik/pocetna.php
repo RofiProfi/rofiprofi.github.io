@@ -91,8 +91,7 @@
 						<div class="col-sm-4">
 							<div class="product-image-wrapper">
 									<div class="productinfo text-center">
-								<?php echo "<img src='". $pom['proizvod_slika1']. "''> ";?>
-
+										<?php echo "<img src=". "'".$pom['proizvod_slika1']. "'";?>
 										<h2><?php echo "$".$pom['proizvod_cena']?></h2>
 										<p><?php echo $pom['proizvod_opis']?></p>
 									<?php 
