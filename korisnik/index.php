@@ -37,6 +37,7 @@ switch($_SERVER['REQUEST_METHOD']) {
             case 'addtocart':
                 $controller->addTokolica();
                 break;
+                /*
             case 'deleteJedan':
                 $controller->obrisiJedan();
                 break;
@@ -46,7 +47,7 @@ switch($_SERVER['REQUEST_METHOD']) {
             case 'confirmshopping':
                 $controller->confirmShopping();
                 break;
-                
+                */
             case 'goRacun':
                 $controller->goRacun();
                 break;
@@ -54,18 +55,21 @@ switch($_SERVER['REQUEST_METHOD']) {
             case 'product':
                 $controller->proizvodByKategodija();
                 break;
+                /*
             case 'delete':
                 $controller-> potvrdica();
                 break;
-                
+                */
             default:
                 // ZA POGRESNE RUTE IZLOGOVATI KORISNIKA
                 $controller->pocetna();
                 break;
+            
         }
         
     case "POST":
         switch ($action){
+            /*
             case 'Login':
                 $controller->login();
                 break;
@@ -78,7 +82,7 @@ switch($_SERVER['REQUEST_METHOD']) {
             case 'potvrda':
                 $controller->narudzbenica();
                 break;
-        }
+            */  }
         
 }
 ?>
