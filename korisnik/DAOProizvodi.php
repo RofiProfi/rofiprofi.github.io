@@ -73,10 +73,7 @@ class DAOProizvodi
         $statement->bindValue(7, $proizvod_opis);
         $statement->bindValue(8, $kolica_kolicina);
         $statement->bindValue(9, $narudzbenica_id);
-
         $statement->execute();
-        $result = $statement->fetchAll();
-        return $result;
     }
 
 

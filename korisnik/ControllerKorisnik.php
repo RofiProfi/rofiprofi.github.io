@@ -69,7 +69,25 @@ class ControllerKorisnik
 		$dao = new DAOProizvodi();
 		$idart = isset($_GET['idart']) ? $_GET['idart'] : '';
 		if (!empty($idart)) {
+			$dao = new DAOProizvodi();
 			$artikal = $dao->selectArtikalByID($idart);
+			$korisnik_id = $_SESSION['ulogovan']["korisnik_id"];
+			$p = $dao->selectArtikalByUserId($_SESSION['ulogovan']["korisnik_id"]);
+			$postoji = array_column($p, 'proizvod_id');
+			$kolica_id = $dao->selectKolicaId($korisnik_id);
+			$narudzbenica_id = $dao->selectNarudzbenicaId();
+			if ($narudzbenica_id == null) {
+				$narudzbenica_id = 0;
+			} else {
+				$narudzbenica_id++;
+			}
+
+			if (($kolica_id != null) || ($kolica_id != 0)) {
+				$kolica_id = $kolica_id + 1;
+			} else {
+				$kolica_id = 0;
+			}
+
 			if ($artikal) {
 
 				// session_start();
@@ -78,27 +96,11 @@ class ControllerKorisnik
 
 					$_SESSION['korpa'] = array();
 				$_SESSION['korpa'] = $artikal;
-				$dao = new DAOProizvodi();
-				$korisnik_id = $_SESSION['ulogovan']["korisnik_id"];
-				$p = $dao->selectArtikalByUserId($_SESSION['ulogovan']["korisnik_id"]);
-				$postoji = array_column($p, 'proizvod_id');
+
 				if (in_array($idart, $postoji)) {
 					$_SESSION['korpa'] = $dao->updateKolicina($_SESSION['ulogovan']["korisnik_id"], $idart);
 					header("Location:?action=pocetna");
 				} else {
-					$narudzbenica_id = $dao->selectNarudzbenicaId();
-					if ($narudzbenica_id == null) {
-						$narudzbenica_id = 0;
-					} else {
-						$narudzbenica_id++;
-					}
-					$kolica_id = $dao->selectKolicaId($korisnik_id);
-
-					if ($kolica_id == null) {
-						$kolica_id = 0;
-					} else {
-						$kolica_id++;
-					}
 
 					$artikal['kolicina'] = 1;
 					$_SESSION['korpa'] = $dao->insertkolica($kolica_id, $korisnik_id, $artikal['proizvod_id'], $artikal['proizvod_opis'], $artikal['proizvod_slika2'], $artikal['proizvod_cena'], $artikal['proizvod_opis'], $artikal['kolicina'], $narudzbenica_id);
