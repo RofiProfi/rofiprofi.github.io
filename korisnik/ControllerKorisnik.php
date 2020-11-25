@@ -79,6 +79,7 @@ class ControllerKorisnik
 					$_SESSION['korpa'] = array();
 				$_SESSION['korpa'] = $artikal;
 				$dao = new DAOProizvodi();
+				$korisnik_id = $_SESSION['ulogovan']["korisnik_id"];
 				$p = $dao->selectArtikalByUserId($_SESSION['ulogovan']["korisnik_id"]);
 				$postoji = array_column($p, 'proizvod_id');
 				if (in_array($idart, $postoji)) {
@@ -91,8 +92,16 @@ class ControllerKorisnik
 					} else {
 						$narudzbenica_id++;
 					}
+					$kolica_id = $dao->selectKolicaId($korisnik_id);
+
+					if ($kolica_id == null) {
+						$kolica_id = 0;
+					} else {
+						$kolica_id++;
+					}
+
 					$artikal['kolicina'] = 1;
-					$_SESSION['korpa'] = $dao->insertkolica($_SESSION['ulogovan']["korisnik_id"], $artikal['proizvod_id'], $artikal['proizvod_opis'], $artikal['proizvod_slika2'], $artikal['proizvod_cena'], $artikal['proizvod_opis'], $artikal['kolicina'], $narudzbenica_id);
+					$_SESSION['korpa'] = $dao->insertkolica($kolica_id, $korisnik_id, $artikal['proizvod_id'], $artikal['proizvod_opis'], $artikal['proizvod_slika2'], $artikal['proizvod_cena'], $artikal['proizvod_opis'], $artikal['kolicina'], $narudzbenica_id);
 					$artikli = $dao->selectArtikli();
 					$korpa = isset($_SESSION['korpa']) ? $_SESSION['korpa'] : array();
 

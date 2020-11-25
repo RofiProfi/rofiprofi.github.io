@@ -13,11 +13,11 @@ class DAOProizvodi
     private $SELECTARTIKALBYID = "SELECT * FROM proizvodi WHERE proizvod_id = ?";
     private $selectArtikalByUser = "Select proizvod_id, proizvod_naziv,proizvod_naziv,proizvod_slika2,proizvod_cena,proizvod_opis,kolica_kolicina from kolica where korisnik_id=?";
 
-    private $insertkolica = "INSERT into kolica (korisnik_id,proizvod_id,proizvod_naziv,proizvod_slika2,proizvod_cena,proizvod_opis,kolica_kolicina,narudzbenica_id) VALUES (?,?,?, ?,?,?,?,?)";
+    private $insertkolica = "INSERT into kolica (kolica_id,korisnik_id,proizvod_id,proizvod_naziv,proizvod_slika2,proizvod_cena,proizvod_opis,kolica_kolicina,narudzbenica_id) VALUES (?,?,?,?, ?,?,?,?,?)";
 
     private $selectProductIdByUser = "select proizvod_id from kolica where proizvod_id=?";
 
-
+    private $selectKolicaId = "SELECT MAX(kolica_id) from kolica where korisnik_id=?";
     private $SELECTARTIKALBYKATEGORIJA = "SELECT proizvod_naziv,proizvod_slika1,proizvod_slika2,proizvod_cena,proizvod_opis,proizvod_id FROM proizvodi WHERE proizvod_kategorija_id = ?";
 
 
@@ -50,20 +50,29 @@ class DAOProizvodi
         return $result;
     }
 
+    //ovde dodala selectKolicaId
+
+    public function selectKolicaId($korisnik_id)
+    {
+        $statement = $this->db->prepare($this->selectKolicaId);
+        $statement->bindValue(1, $korisnik_id);
+        $statement->execute();
+    }
 
     //ovde dodala narudzbenica_id
 
-    function insertkolica($korisnik_id, $proizvod_id, $proizvod_naziv, $proizvod_slika2, $proizvod_cena, $proizvod_opis, $kolica_kolicina, $narudzbenica_id)
+    function insertkolica($kolica_id, $korisnik_id, $proizvod_id, $proizvod_naziv, $proizvod_slika2, $proizvod_cena, $proizvod_opis, $kolica_kolicina, $narudzbenica_id)
     {
         $statement = $this->db->prepare($this->insertkolica);
-        $statement->bindValue(1, $korisnik_id);
-        $statement->bindValue(2, $proizvod_id);
-        $statement->bindValue(3, $proizvod_naziv);
-        $statement->bindValue(4, $proizvod_slika2);
-        $statement->bindValue(5, $proizvod_cena);
-        $statement->bindValue(6, $proizvod_opis);
-        $statement->bindValue(7, $kolica_kolicina);
-        $statement->bindValue(8, $narudzbenica_id);
+        $statement->bindValue(1, $kolica_id);
+        $statement->bindValue(2, $korisnik_id);
+        $statement->bindValue(3, $proizvod_id);
+        $statement->bindValue(4, $proizvod_naziv);
+        $statement->bindValue(5, $proizvod_slika2);
+        $statement->bindValue(6, $proizvod_cena);
+        $statement->bindValue(7, $proizvod_opis);
+        $statement->bindValue(8, $kolica_kolicina);
+        $statement->bindValue(9, $narudzbenica_id);
 
         $statement->execute();
         $result = $statement->fetchAll();
