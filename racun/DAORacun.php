@@ -17,7 +17,7 @@ class DAORacun
 
     private $SELECTUKUPNO = "SELECT SUM(kolica_kolicina*proizvod_cena) from kolica where korisnik_id=?";
 
-    private $SELECTNARUDZBE = "SELECT narudzbenice.ime,narudzbenice.prezime,narudzbenice.email,narudzbenice.adresa,narudzbenice.grad,narudzbenice.drzava,narudzbenice.postanski_Broj,narudzbenice.telefon,narudzbenice.broj_Racuna,narudzbenice.nacin_Placanja,narudzbenice.ukupno, narudzbenice.datum_Narucivanja from narudzbenice where narudzbenice.korisnik_id=? order by narudzbenice.korisnik_id desc limit 1";
+    private $SELECTNARUDZBE = "SELECT narudzbenice.ime,narudzbenice.prezime,narudzbenice.email,narudzbenice.adresa,narudzbenice.grad,narudzbenice.drzava,narudzbenice.postanski_broj,narudzbenice.telefon,narudzbenice.broj_racuna,narudzbenice.nacin_placanja,narudzbenice.ukupno, narudzbenice.datum_narucivanja from narudzbenice where narudzbenice.korisnik_id=? order by narudzbenice.korisnik_id desc limit 1";
 
 
 
@@ -25,7 +25,7 @@ class DAORacun
 
 
 
-    private $insertNarudzbe = "INSERT INTO narudzbenice2 (narudzbenica_id, korisnik_id,kolica_id,ime,prezime,email, adresa,grad,drzava,postanski_Broj,telefon,ukupno,broj_Racuna,nacin_Placanja,datum_Narucivanja) VALUES (?,?,?,?,?, ?, ?, ?,?, ?, ?,?, ?, ?,CURRENT_TIMESTAMP)";
+    private $insertNarudzbe = "INSERT INTO narudzbenice2 (narudzbenica_id, korisnik_id,kolica_id,ime,prezime,email, adresa,grad,drzava,postanski_broj,telefon,ukupno,broj_racuna,nacin_placanja,datum_narucivanja) VALUES (?,?,?,?,?, ?, ?, ?,?, ?, ?,?, ?, ?,CURRENT_TIMESTAMP)";
 
 
 
@@ -44,12 +44,11 @@ class DAORacun
 
 
 
-    public function insertNarudzbe($narudzbenica_id, $korisnik_id, $kolica_id, $ime, $prezime, $email, $adresa, $grad, $drzava, $postanski_Broj, $telefon, $ukupno, $broj_Racuna, $nacin_Placanja)
+    public function insertNarudzbe($narudzbenica_id, $korisnik_id, $kolica_id, $ime, $prezime, $email, $adresa, $grad, $drzava, $postanski_broj, $telefon, $ukupno, $broj_racuna, $nacin_placanja)
     {
         $statement = $this->db->prepare($this->insertNarudzbe);
         $statement->bindValue(1, $narudzbenica_id);
         $statement->bindValue(2, $korisnik_id);
-
         $statement->bindValue(3, $kolica_id);
         $statement->bindValue(4, $ime);
         $statement->bindValue(5, $prezime);
@@ -57,11 +56,11 @@ class DAORacun
         $statement->bindValue(7, $adresa);
         $statement->bindValue(8, $grad);
         $statement->bindValue(9, $drzava);
-        $statement->bindValue(10, $postanski_Broj);
+        $statement->bindValue(10, $postanski_broj);
         $statement->bindValue(11, $telefon);
         $statement->bindValue(12, $ukupno);
-        $statement->bindValue(13, $broj_Racuna);
-        $statement->bindValue(14, $nacin_Placanja);
+        $statement->bindValue(13, $broj_racuna);
+        $statement->bindValue(14, $nacin_placanja);
         $statement->execute();
     }
 

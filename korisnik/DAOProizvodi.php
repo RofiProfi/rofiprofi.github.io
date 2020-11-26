@@ -17,12 +17,13 @@ class DAOProizvodi
 
     private $selectProductIdByUser = "select proizvod_id from kolica where proizvod_id=?";
 
-    private $selectKolicaId = "SELECT MAX(kolica_id) from kolica where korisnik_id=?";
+    private $selectKolicaId = "SELECT * from kolica where kolica_id=(select MAX(kolica_id) from kolica)";
     private $SELECTARTIKALBYKATEGORIJA = "SELECT proizvod_naziv,proizvod_slika1,proizvod_slika2,proizvod_cena,proizvod_opis,proizvod_id FROM proizvodi WHERE proizvod_kategorija_id = ?";
 
 
 
     private $updateKolicina = "UPDATE kolica set kolica_kolicina=kolica_kolicina+1  where korisnik_id=? and proizvod_id=?";
+    private $updateKolica = "UPDATE kolica set kolica_kolicina=kolica_kolicina+1  where korisnik_id=? and proizvod_id=?";
 
     private $updateSifru = "UPDATE korisnici set korisnik_sifra=? where korisnik_id=?";
 
@@ -52,10 +53,9 @@ class DAOProizvodi
 
     //ovde dodala selectKolicaId
 
-    public function selectKolicaId($korisnik_id)
+    public function selectKolicaId()
     {
         $statement = $this->db->prepare($this->selectKolicaId);
-        $statement->bindValue(1, $korisnik_id);
         $statement->execute();
     }
 

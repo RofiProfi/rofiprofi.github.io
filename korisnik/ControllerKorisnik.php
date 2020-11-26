@@ -74,7 +74,8 @@ class ControllerKorisnik
 			$korisnik_id = $_SESSION['ulogovan']["korisnik_id"];
 			$p = $dao->selectArtikalByUserId($_SESSION['ulogovan']["korisnik_id"]);
 			$postoji = array_column($p, 'proizvod_id');
-			$kolica_id = $dao->selectKolicaId($korisnik_id);
+			$kolica_id = $dao->selectKolicaId();
+			var_dump($kolica_id);
 			$narudzbenica_id = $dao->selectNarudzbenicaId();
 			if ($narudzbenica_id == null) {
 				$narudzbenica_id = 0;
