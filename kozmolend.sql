@@ -19,45 +19,45 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `kozmolend`
+-- Database: kozmolend
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin`
+-- Table structure for table admin
 --
 
-CREATE TABLE `admin` (
-  `admin_id` int(11) NOT NULL,
-  `admin_email` varchar(50) NOT NULL,
-  `admin_pass` varchar(10) NOT NULL
+CREATE TABLE admin (
+  admin_id int(11) NOT NULL,
+  admin_email varchar(50) NOT NULL,
+  admin_pass varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `admin`
+-- Dumping data for table admin
 --
 
-INSERT INTO `admin` (`admin_id`, `admin_email`, `admin_pass`) VALUES
+INSERT INTO admin (admin_id, admin_email, admin_pass) VALUES
 (1, 'admin@gmail.com', 'admin@gmai');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kategorije`
+-- Table structure for table kategorije
 --
 
-CREATE TABLE `kategorije` (
-  `kategorija_id` int(11) NOT NULL,
-  `kategorija_naziv` varchar(50) NOT NULL,
-  `kategorija_opis` varchar(50) NOT NULL
+CREATE TABLE kategorije (
+  kategorija_id int(11) NOT NULL,
+  kategorija_naziv varchar(50) NOT NULL,
+  kategorija_opis varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `kategorije`
+-- Dumping data for table kategorije
 --
 
-INSERT INTO `kategorije` (`kategorija_id`, `kategorija_naziv`, `kategorija_opis`) VALUES
+INSERT INTO kategorije (kategorija_id, kategorija_naziv, kategorija_opis) VALUES
 (1, 'Apoteka', 'Proizvodi Apoteke'),
 (2, 'Lepota i nega', 'Proizvodi Lepote i nege'),
 (3, 'Parfemi', 'Proizvodi parfema'),
@@ -67,26 +67,26 @@ INSERT INTO `kategorije` (`kategorija_id`, `kategorija_naziv`, `kategorija_opis`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kolica`
+-- Table structure for table kolica
 --
 
-CREATE TABLE `kolica` (
-  `kolica_id` int(11) NOT NULL,
-  `korisnik_id` int(11) NOT NULL,
-  `proizvod_id` int(11) NOT NULL,
-  `proizvod_naziv` varchar(50) NOT NULL,
-  `proizvod_slika2` varchar(50) NOT NULL,
-  `proizvod_cena` float NOT NULL,
-  `proizvod_opis` varchar(50) NOT NULL,
-  `kolica_kolicina` int(11) NOT NULL,
-  `narudzbenica_id` int(11) NOT NULL
+CREATE TABLE kolica (
+  kolica_id int(11) NOT NULL,
+  korisnik_id int(11) NOT NULL,
+  proizvod_id int(11) NOT NULL,
+  proizvod_naziv varchar(50) NOT NULL,
+  proizvod_slika2 varchar(50) NOT NULL,
+  proizvod_cena float NOT NULL,
+  proizvod_opis varchar(50) NOT NULL,
+  kolica_kolicina int(11) NOT NULL,
+  narudzbenica_id int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `kolica`
+-- Dumping data for table kolica
 --
 
-INSERT INTO `kolica` (`kolica_id`, `korisnik_id`, `proizvod_id`, `proizvod_naziv`, `proizvod_slika2`, `proizvod_cena`, `proizvod_opis`, `kolica_kolicina`, `narudzbenica_id`) VALUES
+INSERT INTO kolica (kolica_id, korisnik_id, proizvod_id, proizvod_naziv, proizvod_slika2, proizvod_cena, proizvod_opis, kolica_kolicina, narudzbenica_id) VALUES
 (0, 6, 1, 'Nivea komplet', '<img src=\"../images/cart/product1.jpg\"/>', 100, 'Nivea komplet', 6, 0),
 (0, 6, 2, 'Muski parfem', '<img src=\"../images/cart/product2.jpg\" alt=\"\" />', 20, 'Muski parfem', 4, 0),
 (0, 6, 5, 'Pretty By Flomar Roze', '<img src=\"../images/cart/product7.jpg\" alt=\"\" />', 5, 'Pretty By Flomar Roze', 1, 0),
@@ -95,22 +95,22 @@ INSERT INTO `kolica` (`kolica_id`, `korisnik_id`, `proizvod_id`, `proizvod_naziv
 -- --------------------------------------------------------
 
 --
--- Table structure for table `korisnici`
+-- Table structure for table korisnici
 --
 
-CREATE TABLE `korisnici` (
-  `korisnik_id` int(11) NOT NULL,
-  `korisnik_ime` varchar(50) NOT NULL,
-  `korisnik_prezime` varchar(50) NOT NULL,
-  `korisnik_email` varchar(50) NOT NULL,
-  `korisnik_sifra` varchar(50) NOT NULL
+CREATE TABLE korisnici (
+  korisnik_id int(11) NOT NULL,
+  korisnik_ime varchar(50) NOT NULL,
+  korisnik_prezime varchar(50) NOT NULL,
+  korisnik_email varchar(50) NOT NULL,
+  korisnik_sifra varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `korisnici`
+-- Dumping data for table korisnici
 --
 
-INSERT INTO `korisnici` (`korisnik_id`, `korisnik_ime`, `korisnik_prezime`, `korisnik_email`, `korisnik_sifra`) VALUES
+INSERT INTO korisnici (korisnik_id, korisnik_ime, korisnik_prezime, korisnik_email, korisnik_sifra) VALUES
 (1, 'Natasa', '', 'natasa@gmail.com', 'natasa12'),
 (2, 'Zeljko', '', 'zeljko@gmail.com', 'zeljko@gmail.com'),
 (3, 'Pera', 'Peric', 'zeljko3@gmail.com', 'zeljko3@gmail.com'),
@@ -124,35 +124,35 @@ INSERT INTO `korisnici` (`korisnik_id`, `korisnik_ime`, `korisnik_prezime`, `kor
 -- --------------------------------------------------------
 
 --
--- Table structure for table `narudzbenice`
+-- Table structure for table narudzbenice
 --
 
-CREATE TABLE `narudzbenice` (
-  `narudzbenica_id` int(11) NOT NULL,
-  `korisnik_id` int(11),
-  `kolica_id` int(11) DEFAULT NULL,
-  `ime` varchar(50),
-  `prezime` varchar(50),
-  `email` varchar(50),
-  `adresa` varchar(50),
-  `grad` varchar(50),
-  `drzava` varchar(50),
-  `postanskiBroj` varchar(10),
-  `telefon` varchar(10),
-  `ukupno` float,
-  `brojRacuna` varchar(10) NOT NULL,
-  `nacinPlacanja` varchar(10) NOT NULL,
-  `datumNarucivanja` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `proizvod_naziv` varchar(50) NOT NULL,
-  `proizvod_cena` float NOT NULL,
-  `kolica_kolicina` int(11) NOT NULL
+CREATE TABLE narudzbenice (
+  narudzbenica_id int(11) NOT NULL,
+  korisnik_id int(11),
+  kolica_id int(11) DEFAULT NULL,
+  ime varchar(50),
+  prezime varchar(50),
+  email varchar(50),
+  adresa varchar(50),
+  grad varchar(50),
+  drzava varchar(50),
+  postanski_broj varchar(10),
+  telefon varchar(10),
+  ukupno float,
+  broj_racuna varchar(10) NOT NULL,
+  nacin_placanja varchar(10) NOT NULL,
+  datum_narucivanja timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  proizvod_naziv varchar(50) NOT NULL,
+  proizvod_cena float NOT NULL,
+  kolica_kolicina int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `narudzbenice`
+-- Dumping data for table narudzbenice
 --
 
-INSERT INTO `narudzbenice` (`narudzbenica_id`, `korisnik_id`, `kolica_id`, `ime`, `prezime`, `email`, `adresa`, `grad`, `drzava`, `postanskiBroj`, `telefon`, `ukupno`, `brojRacuna`, `nacinPlacanja`, `datumNarucivanja`, `proizvod_naziv`, `proizvod_cena`, `kolica_kolicina`) VALUES
+INSERT INTO narudzbenice (narudzbenica_id, korisnik_id, kolica_id, ime, prezime, email, adresa, grad, drzava, postanski_broj, telefon, ukupno, broj_racuna, nacin_placanja, datum_narucivanja, proizvod_naziv, proizvod_cena, kolica_kolicina) VALUES
 (1, 6, 0, 'Radovan', 'Radovanovic', 'radovan@gmail.com', 'Bulevar4', 'Beograd', 'Srbija', '11000', '0623335559', 345, '1112223334', 'mastercard', '2019-07-02 09:34:36', 'Nivea komplet', 100, 6),
 (1, 6, 0, 'Radovan', 'Radovanovic', 'radovan@gmail.com', 'Bulevar4', 'Beograd', 'Srbija', '11000', '0623335559', 345, '1112223334', 'mastercard', '2019-07-02 09:34:36', 'Muski parfem', 20, 4),
 (1, 6, 0, 'Radovan', 'Radovanovic', 'radovan@gmail.com', 'Bulevar4', 'Beograd', 'Srbija', '11000', '0623335559', 345, '1112223334', 'mastercard', '2019-07-02 09:34:36', 'Pretty By Flomar Roze', 5, 1),
@@ -179,32 +179,32 @@ INSERT INTO `narudzbenice` (`narudzbenica_id`, `korisnik_id`, `kolica_id`, `ime`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `narudzbenice2`
+-- Table structure for table narudzbenice2
 --
 
-CREATE TABLE `narudzbenice2` (
-  `narudzbenica_id` int(11) NOT NULL,
-  `korisnik_id` int(11) NOT NULL,
-  `kolica_id` int(11) NOT NULL,
-  `ime` varchar(50) NOT NULL,
-  `prezime` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `adresa` varchar(50) NOT NULL,
-  `grad` varchar(50) NOT NULL,
-  `drzava` varchar(50) NOT NULL,
-  `postanskiBroj` varchar(10) NOT NULL,
-  `telefon` varchar(10) NOT NULL,
-  `ukupno` float NOT NULL,
-  `brojRacuna` varchar(10) NOT NULL,
-  `nacinPlacanja` varchar(10) NOT NULL,
-  `datumNarucivanja` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+CREATE TABLE narudzbenice2 (
+  narudzbenica_id int(11) NOT NULL,
+  korisnik_id int(11) NOT NULL,
+  kolica_id int(11) NOT NULL,
+  ime varchar(50) NOT NULL,
+  prezime varchar(50) NOT NULL,
+  email varchar(50) NOT NULL,
+  adresa varchar(50) NOT NULL,
+  grad varchar(50) NOT NULL,
+  drzava varchar(50) NOT NULL,
+  postanski_broj varchar(10) NOT NULL,
+  telefon varchar(10) NOT NULL,
+  ukupno float NOT NULL,
+  broj_racuna varchar(10) NOT NULL,
+  nacin_placanja varchar(10) NOT NULL,
+  datum_narucivanja timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `narudzbenice2`
+-- Dumping data for table narudzbenice2
 --
 
-INSERT INTO `narudzbenice2` (`narudzbenica_id`, `korisnik_id`, `kolica_id`, `ime`, `prezime`, `email`, `adresa`, `grad`, `drzava`, `postanskiBroj`, `telefon`, `ukupno`, `brojRacuna`, `nacinPlacanja`, `datumNarucivanja`) VALUES
+INSERT INTO narudzbenice2 (narudzbenica_id, korisnik_id, kolica_id, ime, prezime, email, adresa, grad, drzava, postanski_broj, telefon, ukupno, broj_racuna, nacin_placanja, datum_narucivanja) VALUES
 (1, 6, 0, 'Radovan', 'Radovanovic', 'radovan@gmail.com', 'Bulevar4', 'Beograd', 'Srbija', '11000', '0623335559', 345, '1112223334', 'mastercard', '2019-07-02 09:34:36'),
 (2, 6, 0, 'Radovan', 'Radovanovic', 'radovan@gmail.com', 'Bulevar4', 'Beograd', 'Srbija', '11000', '0623335559', 345, '1112223334', 'mastercard', '2019-07-02 09:35:42'),
 (3, 6, 0, 'Radovan', 'Bajkic', 'radovan@gmail.com', 'Bulevar4', 'Zrenjanin', 'Srbija', '19250', '062333777', 587, '11122233', 'mastercard', '2019-07-02 09:38:07'),
@@ -215,24 +215,24 @@ INSERT INTO `narudzbenice2` (`narudzbenica_id`, `korisnik_id`, `kolica_id`, `ime
 -- --------------------------------------------------------
 
 --
--- Table structure for table `proizvodi`
+-- Table structure for table proizvodi
 --
 
-CREATE TABLE `proizvodi` (
-  `proizvod_id` int(11) NOT NULL,
-  `proizvod_kategorija_id` int(11) NOT NULL,
-  `proizvod_naziv` varchar(50) NOT NULL,
-  `proizvod_slika1` varchar(50) NOT NULL,
-  `proizvod_slika2` varchar(50) NOT NULL,
-  `proizvod_cena` float NOT NULL,
-  `proizvod_opis` varchar(50) NOT NULL
+CREATE TABLE proizvodi (
+  proizvod_id int(11) NOT NULL,
+  proizvod_kategorija_id int(11) NOT NULL,
+  proizvod_naziv varchar(50) NOT NULL,
+  proizvod_slika1 varchar(50) NOT NULL,
+  proizvod_slika2 varchar(50) NOT NULL,
+  proizvod_cena float NOT NULL,
+  proizvod_opis varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `proizvodi`
+-- Dumping data for table proizvodi
 --
 
-INSERT INTO `proizvodi` (`proizvod_id`, `proizvod_kategorija_id`, `proizvod_naziv`, `proizvod_slika1`, `proizvod_slika2`, `proizvod_cena`, `proizvod_opis`) VALUES
+INSERT INTO proizvodi (proizvod_id, proizvod_kategorija_id, proizvod_naziv, proizvod_slika1, proizvod_slika2, proizvod_cena, proizvod_opis) VALUES
 (1, 1, 'Nivea set', '<img src=\"../images/home/product1.jpg\" alt=\"\" />', '<img src=\"../images/cart/product1.jpg\"/>', 100, 'Nivea komplet'),
 (2, 5, 'Diora parfem', '<img src=\"../images/home/product2.jpg\" alt=\"\" />', '<img src=\"../images/cart/product2.jpg\" alt=\"\" />', 20, 'Muski parfem'),
 (3, 4, 'Dove sapun', '<img src=\"../images/home/product8.jpg\" alt=\"\" />', '<img src=\"../images/cart/product8.jpg\" alt=\"\" />', 2, 'Dove sapun'),
@@ -254,109 +254,109 @@ INSERT INTO `proizvodi` (`proizvod_id`, `proizvod_kategorija_id`, `proizvod_nazi
 --
 
 --
--- Indexes for table `admin`
+-- Indexes for table admin
 --
-ALTER TABLE `admin`
-  ADD PRIMARY KEY (`admin_id`);
+ALTER TABLE admin
+  ADD PRIMARY KEY (admin_id);
 
 --
--- Indexes for table `kategorije`
+-- Indexes for table kategorije
 --
-ALTER TABLE `kategorije`
-  ADD PRIMARY KEY (`kategorija_id`);
+ALTER TABLE kategorije
+  ADD PRIMARY KEY (kategorija_id);
 
 --
--- Indexes for table `kolica`
+-- Indexes for table kolica
 --
-ALTER TABLE `kolica`
-  ADD KEY `korisnik_id` (`korisnik_id`),
-  ADD KEY `proizvod_id` (`proizvod_id`),
-  ADD KEY `narudzbenica_id` (`narudzbenica_id`),
-  ADD KEY `kolica_id` (`kolica_id`);
+ALTER TABLE kolica
+  ADD KEY korisnik_id (korisnik_id),
+  ADD KEY proizvod_id (proizvod_id),
+  ADD KEY narudzbenica_id (narudzbenica_id),
+  ADD KEY kolica_id (kolica_id);
 
 --
--- Indexes for table `korisnici`
+-- Indexes for table korisnici
 --
-ALTER TABLE `korisnici`
-  ADD PRIMARY KEY (`korisnik_id`);
+ALTER TABLE korisnici
+  ADD PRIMARY KEY (korisnik_id);
 
 --
--- Indexes for table `narudzbenice`
+-- Indexes for table narudzbenice
 --
-ALTER TABLE `narudzbenice`
-  ADD KEY `korisnik_id` (`korisnik_id`),
-  ADD KEY `kolica_id` (`kolica_id`);
+ALTER TABLE narudzbenice
+  ADD KEY korisnik_id (korisnik_id),
+  ADD KEY kolica_id (kolica_id);
 
 --
--- Indexes for table `narudzbenice2`
+-- Indexes for table narudzbenice2
 --
-ALTER TABLE `narudzbenice2`
-  ADD PRIMARY KEY (`narudzbenica_id`),
-  ADD KEY `korisnik_id` (`korisnik_id`),
-  ADD KEY `lista_id` (`kolica_id`);
+ALTER TABLE narudzbenice2
+  ADD PRIMARY KEY (narudzbenica_id),
+  ADD KEY korisnik_id (korisnik_id),
+  ADD KEY lista_id (kolica_id);
 
 --
--- Indexes for table `proizvodi`
+-- Indexes for table proizvodi
 --
-ALTER TABLE `proizvodi`
-  ADD PRIMARY KEY (`proizvod_id`),
-  ADD KEY `proizvod_kategorija_id` (`proizvod_kategorija_id`);
+ALTER TABLE proizvodi
+  ADD PRIMARY KEY (proizvod_id),
+  ADD KEY proizvod_kategorija_id (proizvod_kategorija_id);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `admin`
+-- AUTO_INCREMENT for table admin
 --
-ALTER TABLE `admin`
-  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE admin
+  MODIFY admin_id int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `kategorije`
+-- AUTO_INCREMENT for table kategorije
 --
-ALTER TABLE `kategorije`
-  MODIFY `kategorija_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+ALTER TABLE kategorije
+  MODIFY kategorija_id int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `korisnici`
+-- AUTO_INCREMENT for table korisnici
 --
-ALTER TABLE `korisnici`
-  MODIFY `korisnik_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+ALTER TABLE korisnici
+  MODIFY korisnik_id int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `narudzbenice2`
+-- AUTO_INCREMENT for table narudzbenice2
 --
-ALTER TABLE `narudzbenice2`
-  MODIFY `narudzbenica_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+ALTER TABLE narudzbenice2
+  MODIFY narudzbenica_id int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `proizvodi`
+-- AUTO_INCREMENT for table proizvodi
 --
-ALTER TABLE `proizvodi`
-  MODIFY `proizvod_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+ALTER TABLE proizvodi
+  MODIFY proizvod_id int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `kolica`
+-- Constraints for table kolica
 --
-ALTER TABLE `kolica`
-  ADD CONSTRAINT `kolica_ibfk_2` FOREIGN KEY (`proizvod_id`) REFERENCES `proizvodi` (`proizvod_id`);
+ALTER TABLE kolica
+  ADD CONSTRAINT kolica_ibfk_2 FOREIGN KEY (proizvod_id) REFERENCES proizvodi (proizvod_id);
 
 --
--- Constraints for table `narudzbenice`
+-- Constraints for table narudzbenice
 --
-ALTER TABLE `narudzbenice`
-  ADD CONSTRAINT `narudzbenice_ibfk_1` FOREIGN KEY (`korisnik_id`) REFERENCES `korisnici` (`korisnik_id`);
+ALTER TABLE narudzbenice
+  ADD CONSTRAINT narudzbenice_ibfk_1 FOREIGN KEY (korisnik_id) REFERENCES korisnici (korisnik_id);
 
 --
--- Constraints for table `proizvodi`
+-- Constraints for table proizvodi
 --
-ALTER TABLE `proizvodi`
-  ADD CONSTRAINT `proizvodi_ibfk_1` FOREIGN KEY (`proizvod_kategorija_id`) REFERENCES `kategorije` (`kategorija_id`);
+ALTER TABLE proizvodi
+  ADD CONSTRAINT proizvodi_ibfk_1 FOREIGN KEY (proizvod_kategorija_id) REFERENCES kategorije (kategorija_id);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
