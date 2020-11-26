@@ -86,13 +86,13 @@ class ControllerRacun
 							$Ukupno = $u["sum"];
 						}
 						$dao->insertNarudzbe($narudzbenicaId, $korisnik_id, $kolicaId, $ime, $prezime, $email, $adresa, $grad, $drzava, $postanskiBroj, $telefon, $Ukupno, $brojRacuna, $nacinPlacanja);
-						//$dao->insertLista();
+						$dao->insertLista();
 						$dao->deletekolica($_SESSION['ulogovan']["korisnik_id"]);
 
 						$kupa = $dao->selectNarudzbe($_SESSION['ulogovan']["korisnik_id"]);
 						$ukupno = $dao->ukupno($_SESSION['ulogovan']["korisnik_id"]);
 						foreach ($kupa as $kup) {
-							$msg = "Ime: " . $kup["ime"] . "<br>" . "Prezime: " . $kup["prezime"] . "<br>" . "Email: " . $kup["email"] . " <br>" . "Adresa: " . $kup["adresa"] . " <br>" . "Grad: " . $kup["grad"] . "<br> " . "Drzava: " . $kup["drzava"] . "<br> " . "Postanski broj: " . $kup["postanskiBroj"] . " <br>" . "Broj telefona: " . $kup["telefon"] . " <br>" . "Broj Racuna: " . $kup["brojRacuna"];
+							$msg = "Ime: " . $kup["ime"] . "<br>" . "Prezime: " . $kup["prezime"] . "<br>" . "Email: " . $kup["email"] . " <br>" . "Adresa: " . $kup["adresa"] . " <br>" . "Grad: " . $kup["grad"] . "<br> " . "Drzava: " . $kup["drzava"] . "<br> " . "Postanski broj: " . $kup["postanski_Broj"] . " <br>" . "Broj telefona: " . $kup["telefon"] . " <br>" . "Broj Racuna: " . $kup["broj_Racuna"];
 						}
 
 						include '../potvrda/potvrda.php';
