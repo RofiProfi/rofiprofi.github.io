@@ -1,5 +1,17 @@
 # rofiprofi.github.io
-College project website named Kozmolend. Website includes:
+# Requirement
+PHP, mySQL, Apache server, XAMPP
+
+# Installation
+1. Clone it
+2. Unzip the rar file
+3. Copy unzip folder into ''htdocs'' folder
+4. Import kozmolend.sql database into phpmyadmin
+5. Start it from localhost in your browser
+6. Enjoy :)
+
+
+College project webapp named Kozmolend. Webapp includes:
 •	Login and registration page
 •	Home page with the products
 •	Cart page in which a customer can delete one product or all products from the cart, edit quantity of the products in the cart and proceed to check page.
@@ -9,7 +21,7 @@ Back-end and design of database done by me.
 Front-end of the project did colleague of mine.
 Note: Project is almost completed but there should be added some triggers for better funcionality of database. :)
 
-Screenshots of website:
+Screenshots of webapp:
 Login and registration page:
 ![](kozmolend-ss/loginRegistration.JPG)
 
